@@ -8,13 +8,12 @@ import java.util.LinkedList;
 import Engine.GameObject;
 import Engine.ObjectId;
 
-public class Block extends GameObject
+public class Block2 extends GameObject
 {
 
-	public Block(float x, float y, ObjectId id) 
+	public Block2(float x, float y, ObjectId id) 
 	{
 		super(x, y, id);
-		
 	}
 
 	public void tick(LinkedList<GameObject> object) 
@@ -24,7 +23,7 @@ public class Block extends GameObject
 
 	public void render(Graphics g) 
 	{
-		g.setColor(Color.red);
+		g.setColor(Color.green);
 		g.drawRect((int)x, (int)y, 32, 32);
 	}
 
@@ -32,5 +31,5 @@ public class Block extends GameObject
 	{
 		return new Rectangle((int)x, (int)y,32,32);
 	}
-	
+
 }
