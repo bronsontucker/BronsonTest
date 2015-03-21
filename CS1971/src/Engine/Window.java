@@ -1,10 +1,10 @@
-package TicTacToe;
+package Engine;
 
 import java.awt.Dimension;
 
 import javax.swing.JFrame;
 
-import Engine.Vector2f;
+import TicTacToe.Game;
 
 public class Window 
 {
