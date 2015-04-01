@@ -42,15 +42,16 @@ public class Camera
 		
 		x = -player.x + Game.WIDTH/2;
 		
-		y = -player.y + Game.HEIGHT/ 1.2f;
+//		y = -player.y +512;
+		
 		if(x >=0)
 		{
 			x = 0;
 		}
-		if(y >= 0)
-		{
-			y = 0;
-		}
+//		if(y >= 0)
+//		{
+//			y = 0;
+//		}
 		
 		
 		if(camDebug)

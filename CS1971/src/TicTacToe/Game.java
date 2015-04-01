@@ -18,6 +18,7 @@ import Engine.Camera;
 import Engine.Handler;
 import Engine.KeyInput;
 import Engine.ObjectId;
+import Engine.Texture;
 
 public class Game extends Canvas implements Runnable
 {
@@ -31,11 +32,14 @@ public class Game extends Canvas implements Runnable
 	
 	Handler handler;
 	Camera cam;
+	static Texture tex;
 	
 	private void init()
 	{
 		WIDTH = getWidth();
 		HEIGHT = getHeight();
+		
+		tex = new Texture();
 		
 		BufferedImageLoader loader = new BufferedImageLoader();
 		level = loader.loadImage("/lev2.png");
@@ -162,7 +166,7 @@ public class Game extends Canvas implements Runnable
 				
 				if(red == 255 && green == 255 & blue == 255)
 				{
-					handler.addObject(new Block(xx*32, yy*32, ObjectId.Block));
+					handler.addObject(new Block(xx*32, yy*32,1, ObjectId.Block));
 				}
 				
 				if(red == 0 && green == 0 & blue == 255)
@@ -172,5 +176,10 @@ public class Game extends Canvas implements Runnable
 				
 			}
 		}
+	}
+	
+	public static Texture getInstance()
+	{
+		return tex;
 	}
 }
