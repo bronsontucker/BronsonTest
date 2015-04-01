@@ -40,6 +40,8 @@ public class Player extends GameObject
 				velY = MAX_SPEED;
 			}
 		}
+		
+		falling = true;
 		Collision(object);
 		
 		if(velY <= -10)
@@ -54,10 +56,13 @@ public class Player extends GameObject
 	{
 		for(int i = 0; i < handler.object.size(); i++)
 		{
+			
+			
 			GameObject tempObject = handler.object.get(i);
 			
 			if(tempObject.getId() == ObjectId.Block)
 			{
+				
 				if(getBounds().intersects(tempObject.getBounds()))
 				{
 					y = tempObject.getY() - height;
@@ -65,6 +70,7 @@ public class Player extends GameObject
 					falling = false;
 					jumping = false;
 				}
+				
 				if(getBoundsTop().intersects(tempObject.getBounds()))
 				{
 					y = tempObject.getY() +  height / 3;
@@ -72,7 +78,7 @@ public class Player extends GameObject
 				}
 				if(getBoundsRight().intersects(tempObject.getBounds()))
 				{
-					x = tempObject.getX() - width;
+					x = tempObject.getX() - width + 2;
 					
 				}
 				if(getBoundsLeft().intersects(tempObject.getBounds()))
@@ -90,7 +96,7 @@ public class Player extends GameObject
 		g.fill3DRect((int)x, (int)y, width, height, true);	
 		Graphics2D g2d = (Graphics2D) g;
 		
-		g.setColor(Color.white);
+		g.setColor(Color.GRAY);
 		g2d.draw(getBounds());
 		g2d.draw(getBoundsRight());
 		g2d.draw(getBoundsLeft());

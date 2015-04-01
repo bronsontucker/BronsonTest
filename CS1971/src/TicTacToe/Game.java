@@ -1,5 +1,6 @@
 package TicTacToe;
 
+import gameObjects.Block;
 import gameObjects.Player;
 
 import java.awt.Canvas;
@@ -37,14 +38,14 @@ public class Game extends Canvas implements Runnable
 		HEIGHT = getHeight();
 		
 		BufferedImageLoader loader = new BufferedImageLoader();
-		level = loader.loadImage("levl.png");
+		level = loader.loadImage("/lev2.png");
+		
 		
 		handler = new Handler();	
 		
 		cam = new Camera(0, 0);
 		
-		handler.addObject(new Player(100, 100, ObjectId.Player,handler));
-		handler.createLevel();
+		LoadImageLevel(level);
 		
 		this.addKeyListener(new KeyInput(handler));
 	}
@@ -142,5 +143,34 @@ public class Game extends Canvas implements Runnable
 		
 		g.dispose();
 		bs.show();
+	}
+	
+	private void LoadImageLevel(BufferedImage image)
+	{
+		int w = image.getWidth();
+		int h = image.getHeight();
+		
+		for(int xx = 0; xx < h; xx++)
+		{
+			for(int yy = 0; yy < w; yy++)
+			{
+				int pixel = image.getRGB(xx, yy);
+				
+				int red = (pixel >> 16) & 0xff;
+				int green = (pixel >> 8) & 0xff;
+				int blue =(pixel >> 0) & 0xff;
+				
+				if(red == 255 && green == 255 & blue == 255)
+				{
+					handler.addObject(new Block(xx*32, yy*32, ObjectId.Block));
+				}
+				
+				if(red == 0 && green == 0 & blue == 255)
+				{
+					handler.addObject(new Player(xx*32 ,yy*32, ObjectId.Player, handler));
+				}
+				
+			}
+		}
 	}
 }
