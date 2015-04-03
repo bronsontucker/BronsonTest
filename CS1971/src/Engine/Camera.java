@@ -42,7 +42,7 @@ public class Camera
 		
 		x = -player.x + Game.WIDTH/2;
 		
-//		y = -player.y +512;
+		y = -player.y + Game.WIDTH/2 - 200;
 		
 		if(x >=0)
 		{

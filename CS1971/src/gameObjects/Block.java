@@ -15,6 +15,7 @@ public class Block extends GameObject
 	
 	Texture tex = Game.getInstance();
 	private int type;
+	private boolean useFullGraphics = true;
 
 	public Block(float x, float y, int type, ObjectId id) 
 	{
@@ -30,25 +31,44 @@ public class Block extends GameObject
 
 	public void render(Graphics g) 
 	{
-		if(type == 1)
-		{
-			g.drawImage(tex.block[0], (int)x, (int)y, null);
-		}
-		if(type == 2)
-		{
-			g.drawImage(tex.block[1], (int)x, (int)y, null);
-		}
 		
-		else
-		{
-			g.setColor(Color.red);
-			g.drawRect((int)x, (int)y, 32, 32);
-		}
+		blockHandler(g);		
 	}
 
 	public Rectangle getBounds() 
 	{
 		return new Rectangle((int)x, (int)y,32,32);
+	}
+	
+	public void blockHandler(Graphics g)
+	{
+		if(type == 1)
+		{
+			if(useFullGraphics)
+			{
+				g.drawImage(tex.block[0], (int)x, (int)y, null); //dirt
+			}
+			
+			else 
+			{
+				g.setColor(Color.red);
+				g.drawRect((int)x, (int)y, 32, 32);
+			}
+		}
+		
+		if(type == 2)
+		{
+			if(useFullGraphics)
+			{
+				g.drawImage(tex.block[1], (int)x, (int)y, null); //grass
+			}
+			
+			else 
+			{
+				g.setColor(Color.green);
+				g.drawRect((int)x, (int)y, 32, 32);
+			}			
+		}
 	}
 	
 }

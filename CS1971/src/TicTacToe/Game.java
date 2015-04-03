@@ -54,7 +54,7 @@ public class Game extends Canvas implements Runnable
 		this.addKeyListener(new KeyInput(handler));
 	}
 	
-	public synchronized void start()
+	public void start()
 	{
 		if(running)
 			return;
@@ -94,6 +94,7 @@ public class Game extends Canvas implements Runnable
 				tick();
 				updates++;
 				delta--;
+				
 			}
 			render();
 			frames++;
@@ -172,6 +173,10 @@ public class Game extends Canvas implements Runnable
 				if(red == 0 && green == 0 & blue == 255)
 				{
 					handler.addObject(new Player(xx*32 ,yy*32, ObjectId.Player, handler));
+				}
+				if(red == 0 && green == 80 & blue == 0)
+				{
+					handler.addObject(new Block(xx*32, yy*32,2, ObjectId.Block));
 				}
 				
 			}

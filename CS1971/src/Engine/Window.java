@@ -23,11 +23,13 @@ public class Window
 	{
 		 game.setPreferredSize(new Dimension((int)size.getX(), (int)size.getY()));
 		 JFrame frame = new JFrame(title);
+		 frame.setUndecorated(true);
 		 frame.add(game);
 		 frame.pack();
 		 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		 frame.setResizable(true);
+		 frame.setResizable(false);
 		 frame.setLocationRelativeTo(null);
+		 frame.setExtendedState(JFrame.MAXIMIZED_BOTH); //sets fullscreen
 		 frame.setVisible(true);
 		 
 		 game.start();
