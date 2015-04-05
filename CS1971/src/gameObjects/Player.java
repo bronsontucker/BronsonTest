@@ -1,22 +1,25 @@
 package gameObjects;
 
-import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.util.LinkedList;
 
 
 
+
+
+import TicTacToe.Game;
 import Engine.GameObject;
 import Engine.Handler;
 import Engine.ObjectId;
+import Engine.Texture;
 
 public class Player extends GameObject
 {
 	private int width = 48, height = 96;
 	private float gravity = 0.2f;
 	private final float MAX_SPEED = 10;
+	Texture tex = Game.getInstance();
 	
 	private Handler handler;
 
@@ -50,6 +53,15 @@ public class Player extends GameObject
 		}
 		
 		
+	}
+	
+	public void RenderHandler(Graphics g)
+	{
+		if(facing == 0)
+		g.drawImage(tex.player[0], (int)x, (int)y, null);
+		
+		if(facing == 1)
+			g.drawImage(tex.player[1], (int)x, (int)y, null);
 	}
 	
 	private void Collision(LinkedList<GameObject> object)
@@ -92,15 +104,19 @@ public class Player extends GameObject
 
 	public void render(Graphics g) 
 	{
-		g.setColor(Color.blue);
-		g.fill3DRect((int)x, (int)y, width, height, true);	
-		Graphics2D g2d = (Graphics2D) g;
+//		g.setColor(Color.blue);
+//		g.fill3DRect((int)x, (int)y, width, height, true);	
+//		Graphics2D g2d = (Graphics2D) g;
 		
-		g.setColor(Color.GRAY);
-		g2d.draw(getBounds());
-		g2d.draw(getBoundsRight());
-		g2d.draw(getBoundsLeft());
-		g2d.draw(getBoundsTop());
+	//	g.drawImage(tex.player[0], (int)x, (int)y, null);
+		
+		RenderHandler(g);
+		
+//		g.setColor(Color.GRAY);
+//		g2d.draw(getBounds());
+//		g2d.draw(getBoundsRight());
+//		g2d.draw(getBoundsLeft());
+//		g2d.draw(getBoundsTop());
 	}
 
 	public Rectangle getBounds() 

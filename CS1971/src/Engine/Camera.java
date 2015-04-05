@@ -1,11 +1,14 @@
 package Engine;
 
+import java.awt.Rectangle;
+
 import TicTacToe.Game;
 
 public class Camera 
 {
 	private float x,y;
 	public boolean camDebug = false;
+	private Rectangle test = new Rectangle((int)x, (int) y, (int) (Game.WIDTH), (int)(Game.WIDTH));
 	
 	public Camera(float x, float y)
 	{
@@ -40,9 +43,13 @@ public class Camera
 	public void tick(GameObject player) 
 	{
 		
+		test.x = (int) -x;
+		test.y = (int) -y;
+		
 		x = -player.x + Game.WIDTH/2;
 		
 		y = -player.y + Game.WIDTH/2 - 200;
+		
 		
 		if(x >=0)
 		{
@@ -67,6 +74,11 @@ public class Camera
 	{
 		if(x)camDebug = true;
 		else camDebug = false;
+	}
+	
+	public Rectangle getRectangle()
+	{
+		return test;
 	}
 	
 	

@@ -11,12 +11,14 @@ public abstract class GameObject
 	protected float velX = 0, velY = 0;
 	protected boolean falling = true;
 	protected boolean jumping = false;
+	protected int facing = 0;
 	
 	public GameObject(float x, float y, ObjectId id)
 	{
 		this.x = x;
 		this.y = y;
 		this.id = id;
+		this.facing = facing;
 	}
 	public GameObject(float x, float y)
 	{
@@ -28,6 +30,11 @@ public abstract class GameObject
 	public abstract void render(Graphics g);	
 	public abstract Rectangle getBounds();
 
+	public void setFacing(int f)
+	{
+		facing = f;
+	}
+	
 	public float getX()
 	{
 		return x;

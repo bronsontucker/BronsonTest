@@ -28,8 +28,16 @@ public class KeyInput extends KeyAdapter
 			
 			if(tempObject.getId() == ObjectId.Player)
 			{
-				if(key == KeyEvent.VK_D) tempObject.setVelX(5);
-				if(key == KeyEvent.VK_A) tempObject.setVelX(-5);
+				if(key == KeyEvent.VK_D)
+				{
+					 tempObject.setVelX(5);
+					 tempObject.setFacing(0);
+				}
+				if(key == KeyEvent.VK_A)
+				{
+					tempObject.setVelX(-5);
+					tempObject.setFacing(1);
+				}
 				
 				if(key == KeyEvent.VK_W && !tempObject.isJumping())
 				{

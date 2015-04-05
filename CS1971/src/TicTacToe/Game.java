@@ -147,6 +147,7 @@ public class Game extends Canvas implements Runnable
 		g2d.translate(-cam.getX(), -cam.getY());
 		
 		g.dispose();
+		
 		bs.show();
 	}
 	
@@ -167,7 +168,7 @@ public class Game extends Canvas implements Runnable
 				
 				if(red == 255 && green == 255 & blue == 255)
 				{
-					handler.addObject(new Block(xx*32, yy*32,1, ObjectId.Block));
+					handler.addObject(new Block(xx*32, yy*32,1, ObjectId.Block,cam.getRectangle()));
 				}
 				
 				if(red == 0 && green == 0 & blue == 255)
@@ -176,7 +177,7 @@ public class Game extends Canvas implements Runnable
 				}
 				if(red == 0 && green == 80 & blue == 0)
 				{
-					handler.addObject(new Block(xx*32, yy*32,2, ObjectId.Block));
+					handler.addObject(new Block(xx*32, yy*32,2, ObjectId.Block,cam.getRectangle()));
 				}
 				
 			}
