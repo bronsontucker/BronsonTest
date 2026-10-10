@@ -45,7 +45,7 @@ for index,(title,offsets) in enumerate([('Assembled • 9.1 mm cable',{'body':0,
     ax=fig.add_subplot(1,2,index+1,projection='3d',computed_zorder=False)
     for name in ['body','tpu_insert','compression_cap']:
         mesh=trimesh.load_mesh(root/f'{name}.stl'); mesh.apply_translation([0,0,offsets[name]])
-        poly=Poly3DCollection(mesh.triangles,facecolor=colors[name],edgecolor='none',alpha=1,shade=True,zorder=2)
+        poly=Poly3DCollection(mesh.triangles,facecolors=colors[name],edgecolor='none',alpha=1,shade=True,zorder=2)
         poly.set_zsort('average'); ax.add_collection3d(poly)
     if index==0:
         mesh=trimesh.creation.cylinder(radius=4.55,height=38,sections=48);mesh.apply_translation([0,0,12])
