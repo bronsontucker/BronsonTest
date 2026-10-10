@@ -1,0 +1,6 @@
+{
+  "name": "stl-part-designer",
+  "version": "2.0.0",
+  "description": "Parametric printable mechanical CAD with real helical threads, per-part STL and STEP exports, and strict geometry validation.",
+  "skills": "./.agents/skills/"
+}
