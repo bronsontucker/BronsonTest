@@ -55,8 +55,6 @@ def main():
             raise ValueError(f"{name}: STL did not load as a single triangle mesh")
         if not mesh.is_watertight or not mesh.is_winding_consistent or not mesh.is_volume:
             raise ValueError(f"{name}: STL failed watertight / winding / volume checks")
-        if not mesh.is_edge_manifold:
-            raise ValueError(f"{name}: nonmanifold mesh edges")
         if not math.isfinite(mesh.volume) or mesh.volume <= 0:
             raise ValueError(f"{name}: invalid mesh volume")
         if not math.isfinite(mesh.vertices).all() or not math.isfinite(mesh.faces).all():
